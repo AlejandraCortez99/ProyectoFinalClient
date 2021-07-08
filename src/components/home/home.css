@@ -1,0 +1,14 @@
+.home-container {
+  background-color: aqua;
+  width: 100%;
+  height: 100%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.link {
+  text-decoration: none;
+  background-color: rgba(109, 36, 36, 0);
+  color: white;
+}

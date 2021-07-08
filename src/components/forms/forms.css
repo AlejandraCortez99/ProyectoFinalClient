@@ -1,0 +1,28 @@
+.login-container {
+  background: blue;
+  width: 100%;
+  color: black;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+.link {
+  text-decoration: none;
+  background-color: rgba(109, 36, 36, 0);
+  color: white;
+}
+.singup-container {
+  background: rgba(0, 128, 0, 0.746);
+  width: 100%;
+  color: black;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+form {
+    width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
