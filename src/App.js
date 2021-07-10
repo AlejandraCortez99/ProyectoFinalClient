@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/home/home";
 import Login from "./components/forms/login";
 import SignUp from "./components/forms/signup";
+import HomeUsuario from "./components/homeUsuario/homeUsuario";
 
 
 const App = () => {
@@ -28,6 +29,13 @@ const App = () => {
           path="/signup"
           render={() => {
             return <SignUp></SignUp>;
+          }}
+        />
+         <Route
+          exact
+          path="/homeUsuario"
+          render={() => {
+            return <HomeUsuario></HomeUsuario>;
           }}
         />
       </Switch>

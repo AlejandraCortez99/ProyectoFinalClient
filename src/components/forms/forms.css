@@ -5,6 +5,7 @@
   height: 300px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .link {
   text-decoration: none;
@@ -18,11 +19,14 @@
   height: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 form {
     width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.home-usuario-container {
+  background-color: blueviolet;
 }
