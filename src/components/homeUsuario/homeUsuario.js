@@ -1,6 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
+import Buscar from "../forms/buscar";
 const { useState, useEffect } = React;
 
 const HomeUsuario = () => {
@@ -8,7 +7,7 @@ const HomeUsuario = () => {
     nombre: "",
     favoritos: [],
   });
-  
+
   const getUsuario = async () => {
     let responseFromGet = await fetch("http://localhost:2550/homeUsuario", {
       method: "GET",
@@ -22,69 +21,57 @@ const HomeUsuario = () => {
       .then((result) => {
         return result;
       });
-      console.log(responseFromGet);
-      setInfo({ nombre: responseFromGet.nombre, favoritos: responseFromGet.favoritos})
-    };
-    //       let nombreUsuario = responseFromGet.nombre;
-    //       let favoritosUsuario = responseFromGet.favoritos;
-    //       let guardados = [];
-    //         guardados = favoritosUsuario.map((favoritos) =>{
-    //           let favoritosObj = {
-    //             id: favoritos._id,
-    //             titulo: favoritos.titulo,
-    //             artista: favoritos.artista,
-    //             algum: favoritos.album,
-    //           };
-    //           return favoritosObj;
-    //         });
-    //         let usuarioInfo = {
-    //             nombre: nombreUsuario,
-    //           favoritos: favoritosUsuario,
-    //         };
-    //         setInformation(usuarioInfo);
-    //       };
+    setInfo({
+      nombre: responseFromGet.nombre,
+      favoritos: responseFromGet.favoritos,
+    });
+  };
+  useEffect(() => {
+    getUsuario();
+  }, []);
 
-    //       const setInformation = (information) => {
-    //         setInfo({
-    //           nombre: information.nombre,
-    //           favoritos: information.favoritos,
-    //         });
-    //       };
+  if (info.nombre === "") {
+    return <div>Cargando...</div>;
+  } else {
+    return (
+      <div className="home-usuario-container">
+          <Buscar />
+        {/* <form>
+          <input
+            type="text"
+            name="buscador"
+            placeholder="Bucar Cancion o Artista"
+          />
 
-          useEffect(() => {
-            getUsuario();
-          }, []);
+          <input type="submit" value="Buscar artista" />
+          <input type="submit" value="Buscar cancion" />
 
-    if (info.nombre === "") {
-        return <div>Cargando...</div>;
-      } else {
-        return (
-            <div className="home-usuario-container">
-            <p>Welcome {info.nombre}</p>
-            <table>
-              <caption>
-                Tus favoritos
-              </caption>
-              <tbody>
-                {info.favoritos.map((favorito) => {
-                  return (
-                    <tr key={`favorito-container-${favorito.id}`}>
-                      <td key={`favorito-titulo-${favorito.id}`}>{favorito.titulo}</td>
-                      <td key={`favorito-autor-${favorito.id}`}>{favorito.autor}</td>
-                      <td key={`favorito-album-${favorito.id}`}>{favorito.album}</td>
-                    </tr>
-                 );
-                 })
-                 }
-              </tbody>
-            </table>
-          </div>
-        )};
-    // return (
-    //     <div className="home-usuario-container">
-    //         <h1>Ruta Privada</h1>
-    //     </div>
-    // );
+        </form> */}
 
+        <p>Welcome {info.nombre}</p>
+        <table>
+          <caption>Tus favoritos</caption>
+          <tbody>
+            {info.favoritos.map((favorito) => {
+              return (
+                <tr key={`favorito-container-${favorito._id}`}>
+                  <td key={`favorito-titulo-${favorito._id}`}>
+                    {favorito.titulo}
+                  </td>
+                  <td key={`favorito-autor-${favorito._id}`}>
+                    {favorito.autor}
+                  </td>
+                  <td key={`favorito-album-${favorito._id}`}>
+                    {favorito.album}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+  
 };
 export default HomeUsuario;
