@@ -1,5 +1,9 @@
-.resultados-container td {
+.resultadosCanciones-container {
     margin: auto;
+    background-color: #161c40;
+    color: white;
+    display:flex;
+    flex-direction: column;
 };
 
 

@@ -5,6 +5,7 @@ import Login from "./components/forms/login";
 import SignUp from "./components/forms/signup";
 import HomeUsuario from "./components/homeUsuario/homeUsuario";
 import ResultadosCanciones from "./components/vistasbuscador/resultadosCanciones";
+import ResultadosArtistas from "./components/vistasbuscador/resultadosArtistas";
 
 
 const App = () => {
@@ -44,6 +45,13 @@ const App = () => {
           path="/resultadosCanciones/:cancion"
           render={() => {
             return <ResultadosCanciones></ResultadosCanciones>;
+          }}
+        />
+        <Route
+          exact
+          path="/resultadosArtistas/:artista"
+          render={() => {
+            return <ResultadosArtistas></ResultadosArtistas>;
           }}
         />
       </Switch>

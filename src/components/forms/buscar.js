@@ -22,17 +22,29 @@ const Buscar = () => {
       artista: value,
     });
   };
-  let history = useHistory();
 
+  let history = useHistory();
 
   let enviarCancion = (event) => {
     event.preventDefault();
     redirect();
   };
+
   const redirect = () => {
-      let nombreCancion = info.cancion;
+    let nombreCancion = info.cancion;
     history.push(`/resultadosCanciones/${nombreCancion}`);
   };
+
+  let enviarArtista = (evento) => {
+    evento.preventDefault();
+    redirectArtista();
+  };
+
+  const redirectArtista = () => {
+    let nombreArtista = info.artista;
+    history.push(`/resultadosArtistas/${nombreArtista}`);
+  };
+
   return (
     <div>
       <form onSubmit={enviarCancion}>
@@ -44,8 +56,7 @@ const Buscar = () => {
         />
         <input type="submit" value="Buscar cancion" />
       </form>
-
-      <form>
+      <form onSubmit={enviarArtista}>
         <input
           type="text"
           name="buscador"

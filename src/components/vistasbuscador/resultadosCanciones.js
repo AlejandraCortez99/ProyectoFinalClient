@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Buscar from "../forms/buscar";
+
 const { useState, useEffect } = React;
 
 
@@ -36,7 +37,7 @@ const Canciones = () => {
   }, []);
 
   return (
-    <div className="resultados-container">
+    <div className="resultadosCanciones-container">
       <h1>Canciones</h1>
       <Buscar />
       <table>

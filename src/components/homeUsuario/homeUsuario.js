@@ -35,26 +35,20 @@ const HomeUsuario = () => {
   } else {
     return (
       <div className="home-usuario-container">
-          <Buscar />
-        {/* <form>
-          <input
-            type="text"
-            name="buscador"
-            placeholder="Bucar Cancion o Artista"
-          />
+        <div className="buscar">
+           <Buscar />
+        </div>
 
-          <input type="submit" value="Buscar artista" />
-          <input type="submit" value="Buscar cancion" />
-
-        </form> */}
-
-        <p>Welcome {info.nombre}</p>
+        <h1>Bienvenido {info.nombre}</h1>
+        <h2>Tus favoritos</h2>
         <table>
-          <caption>Tus favoritos</caption>
           <tbody>
             {info.favoritos.map((favorito) => {
               return (
                 <tr key={`favorito-container-${favorito._id}`}>
+                  <td key={`favorito-cover-${favorito._id}`}>
+                  <img src={`https://api.happi.dev/v1/music/cover/${favorito.idApi}`} alt="cover" height="55" width="55" />
+                  </td>
                   <td key={`favorito-titulo-${favorito._id}`}>
                     {favorito.titulo}
                   </td>
