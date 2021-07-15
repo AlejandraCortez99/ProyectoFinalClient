@@ -27,7 +27,6 @@ const Buscar = () => {
 
   let enviarCancion = (event) => {
     event.preventDefault();
-    //  postCancion();
     redirect();
   };
   const redirect = () => {
