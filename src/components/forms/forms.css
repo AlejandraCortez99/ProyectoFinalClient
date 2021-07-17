@@ -28,7 +28,8 @@ form {
   justify-content: center;
 }
 .home-usuario-container {
-  color: black;
+  background-color: #161c40;
+  color: white;
   display:flex;
   flex-direction: column;
   

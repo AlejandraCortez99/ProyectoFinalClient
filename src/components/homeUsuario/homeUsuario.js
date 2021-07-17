@@ -53,7 +53,7 @@ const HomeUsuario = () => {
                   <td key={`favorito-titulo-${favorito._id}`}>
                   <Link
                     to={`/letrasCanciones/${favorito.id_artist}/${favorito.id_album}/${favorito.id_track}`}
-                    className="resultado">
+                    className="link">
                     {favorito.titulo}
                   </Link>
                   </td>

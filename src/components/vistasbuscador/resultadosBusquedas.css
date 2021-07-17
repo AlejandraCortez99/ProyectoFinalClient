@@ -1,10 +1,10 @@
 .resultadosCanciones-container {
     margin: auto;
-    /* background-color: #161c40; */
-    color: black;
+    background-color: #161c40;
+    color: white;
     display:flex;
     flex-direction: column;
-};
+}
 .cancion-container {
     /* background-color: tomato; */
     display:flex;
@@ -30,7 +30,11 @@
     align-items: flex-start;
     justify-content: space-evenly;
 }
-h3{
+h3, h1{
     color: #0ff2b2;
 }
-
+.link {
+    text-decoration: none;
+    background-color: rgba(109, 36, 36, 0);
+    color: white;
+  }

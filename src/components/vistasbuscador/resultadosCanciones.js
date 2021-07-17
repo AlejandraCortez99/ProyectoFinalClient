@@ -35,7 +35,10 @@ const Canciones = () => {
     postCancion();
   }, []);
 
-  return (
+  if (info.cancion === "") {
+    return <div>Cargando...</div>;
+  } else {
+    return (
     <div className="resultadosCanciones-container">
       <h1>Canciones</h1>
       <Buscar />
@@ -57,7 +60,7 @@ const Canciones = () => {
                 <td key={`resultados-titulo-${resultado}`}>
                   <Link
                     to={`/letrasCanciones/${resultado.id_artist}/${resultado.id_album}/${resultado.id_track}`}
-                    className="resultado">
+                    className="link">
                     {resultado.track}
                   </Link>
                 </td>
@@ -71,6 +74,6 @@ const Canciones = () => {
         </tbody>
       </table>
     </div>
-  );
+  )};
 };
 export default Canciones;
