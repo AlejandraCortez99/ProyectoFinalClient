@@ -5,7 +5,7 @@ import Buscar from "../forms/buscar";
 const { useState, useEffect } = React;
 
 const Artistas = () => {
-  let [info, setInfo] = useState({
+  let [info, setState] = useState({
     artista: [],
   });
   let artista = useParams();
@@ -28,7 +28,7 @@ const Artistas = () => {
         return result;
       });
       console.log(responseFromPost);
-    setInfo({
+    setState({
       artista: responseFromPost,
     });
   };
@@ -45,7 +45,7 @@ const Artistas = () => {
         <tbody>
           {info.artista.map((busqueda) => {
             return (
-              <tr key={`resultados-container-${busqueda}`}>
+              <tr key={`resultados-container-${busqueda.id_artist}`}>
                 <td key={`resultados-cover-${busqueda}`}>
                   <img src={`https://api.happi.dev/v1/music/cover/${busqueda.id_album}`} alt="cover" height="55" width="55" />
                 </td>

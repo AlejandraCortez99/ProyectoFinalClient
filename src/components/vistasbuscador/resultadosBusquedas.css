@@ -1,10 +1,36 @@
 .resultadosCanciones-container {
     margin: auto;
-    background-color: #161c40;
-    color: white;
+    /* background-color: #161c40; */
+    color: black;
     display:flex;
     flex-direction: column;
 };
-
-
+.cancion-container {
+    /* background-color: tomato; */
+    display:flex;
+}
+.informacion {
+    /* background-color: turquoise; */
+    width: 190px;
+}
+.lyrics {
+    /* background-color: seagreen; */
+    width:350px;
+    display:flex;
+    flex-direction: column;
+}
+.resultados-container-cancion {
+    display:flex;
+    flex-direction: column;
+    background-color: navy;
+    color: white;
+}
+.cancion-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+h3{
+    color: #0ff2b2;
+}
 

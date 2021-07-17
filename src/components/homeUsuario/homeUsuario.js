@@ -1,13 +1,17 @@
 import React from "react";
-import Buscar from "../forms/buscar";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Navbar from "../home/navbar";
+import LetrasCanciones from "../vistasbuscador/letrasCanciones";
 const { useState, useEffect } = React;
+
 
 const HomeUsuario = () => {
   let [info, setInfo] = useState({
     nombre: "",
     favoritos: [],
   });
-
+  let params = useParams();
   const getUsuario = async () => {
     let responseFromGet = await fetch("http://localhost:2550/homeUsuario", {
       method: "GET",
@@ -35,10 +39,7 @@ const HomeUsuario = () => {
   } else {
     return (
       <div className="home-usuario-container">
-        <div className="buscar">
-           <Buscar />
-        </div>
-
+        <Navbar />
         <h1>Bienvenido {info.nombre}</h1>
         <h2>Tus favoritos</h2>
         <table>
@@ -47,10 +48,14 @@ const HomeUsuario = () => {
               return (
                 <tr key={`favorito-container-${favorito._id}`}>
                   <td key={`favorito-cover-${favorito._id}`}>
-                  <img src={`https://api.happi.dev/v1/music/cover/${favorito.idApi}`} alt="cover" height="55" width="55" />
+                  <img src={`https://api.happi.dev/v1/music/cover/${favorito.id_album}`} alt="cover" height="55" width="55" />
                   </td>
                   <td key={`favorito-titulo-${favorito._id}`}>
+                  <Link
+                    to={`/letrasCanciones/${favorito.id_artist}/${favorito.id_album}/${favorito.id_track}`}
+                    className="resultado">
                     {favorito.titulo}
+                  </Link>
                   </td>
                   <td key={`favorito-autor-${favorito._id}`}>
                     {favorito.autor}
