@@ -39,8 +39,9 @@ const Letras = () => {
         <h3>OTRA RUTA CON LETRA</h3>
       </div>
       {info.lyrics.map((obj) => {
+ //Lineas de 43 a 45 son para sustituir los "/n" por saltos de linea. En consola aparece correctamente, pero al llamarlo en pantalla no(???)
         const finalLinea = obj.cancion.lyrics;
-        const versos = finalLinea.replace("/n", <br />);
+        const versos = finalLinea.replace("/n", <br/>);
         console.log(versos);
         return (
           <div
