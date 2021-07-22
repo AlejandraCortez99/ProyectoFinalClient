@@ -5,7 +5,14 @@ const { useState, useEffect } = React;
 
 const Letras = () => {
   let [info, setInfo] = useState({
+    titulo: "",
+    artista: "",
+    album: "",
+    id_album: "",
+    favorito: false,
     lyrics: [],
+    cargando: true,
+    // versos:[],
   });
   let { id_artist, id_album, id_track } = useParams();
   const getLetra = async () => {
@@ -24,48 +31,53 @@ const Letras = () => {
       .then((result) => {
         return result;
       });
-    console.log(responseFromGet);
+    console.log(responseFromGet.cancion.lyrics);
+    const finalLinea = responseFromGet.cancion.lyrics;
+    const versos = finalLinea.split("\n");
+    console.log(versos);
     setInfo({
-      lyrics: [responseFromGet],
+      titulo: responseFromGet.cancion.track,
+      artista: responseFromGet.cancion.artist,
+      album: responseFromGet.cancion.album,
+      id_album: responseFromGet.cancion.id_album,
+      favorito: responseFromGet.favorito,
+      lyrics: versos,
+      cargando: false,
     });
   };
   useEffect(() => {
     getLetra();
   }, []);
 
-  return (
-    <div className="resultados-container-cancion">
-      <div>
-        <h3>OTRA RUTA CON LETRA</h3>
-      </div>
-      {info.lyrics.map((obj) => {
- //Lineas de 43 a 45 son para sustituir los "/n" por saltos de linea. En consola aparece correctamente, pero al llamarlo en pantalla no(???)
-        const finalLinea = obj.cancion.lyrics;
-        const versos = finalLinea.replace("/n", <br/>);
-        console.log(versos);
-        return (
-          <div
-            key={`cancion-container-${obj.cancion}`}
-            className="cancion-container"
-          >
-            <div key={`cancion-informacion-${obj}`} className="informacion">
-              <img
-                src={`https://api.happi.dev/v1/music/cover/${obj.cancion.id_album}`}
-                alt="cover"
-                height="190"
-                width="190"
-              />
-              <h5>{obj.cancion.artist}</h5>
-              <h6>{obj.cancion.album}</h6>
-            </div>
-            <div key={`cancion-lyrics-container-${obj}`} className="lyrics">
-              <h4>{obj.cancion.track}</h4>
-              <p>{versos}</p>
-            </div>
+  if (info.cargando == true) {
+    return <div>Cargando...</div>;
+  } else {
+    return (
+      <div className="resultados-container-cancion">
+        <div
+          className="cancion-container"
+        >
+          <div className="informacion">
+            <img
+              src={`https://api.happi.dev/v1/music/cover/${info.id_album}`}
+              alt="cover"
+              height="190"
+              width="190"
+            />
+            <h5>{info.artista}</h5>
+            <h6>{info.album}</h6>
           </div>
-        );
-      })}
-    </div>
-  );
+          <div className="lyrics">
+            <h4>{info.titulo}</h4>
+            {info.lyrics.map((obj)=>{
+              return (
+                <div>{obj}</div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 export default Letras;

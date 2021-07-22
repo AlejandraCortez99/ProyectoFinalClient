@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Buscar from "../forms/buscar";
-
+import { Link } from "react-router-dom";
 const { useState, useEffect } = React;
 
 const Artistas = () => {
@@ -35,29 +34,39 @@ const Artistas = () => {
   useEffect(() => {
     postArtista();
   }, []);
-  
+  if (info.artista == ""){
+    return <div>Cargando...</div>;
+  } else {
   return (
-    <div className="resultados-container">
+    <div className="resultados-artistas-container">
       <h1>Artistas</h1>
       {/* <Buscar /> */}
       <table>
-        <caption>Tus Artistas</caption>
+        <caption>Artistas</caption>
         <tbody>
-          {info.artista.map((busqueda) => {
-            return (
-              <tr key={`resultados-container-${busqueda.id_artist}`}>
-                <td key={`resultados-cover-${busqueda}`}>
+        {info.artista.map((busqueda) =>{
+          console.log(busqueda);
+   //hacer que muestre un resultado por cada coincidencia, si se repiten, los ignore
+          return (
+              <tr key={`busqueda-container-${busqueda.id_artist}`}>
+                <td key={`busqueda-cover-${busqueda}`}>
                   <img src={`https://api.happi.dev/v1/music/cover/${busqueda.id_album}`} alt="cover" height="55" width="55" />
                 </td>
-                <td key={`resultados-artista-${busqueda}`}>
-                  {busqueda.artist}
+                <td key={`busqueda-artista-${busqueda}`}>
+                  <Link
+                    to={`/albumesArtista/${busqueda.id_artist}`}
+                    className="link">
+                    {busqueda.artist}
+                  </Link>
                 </td>
               </tr>
             );
-          })}
+          }
+          )}
         </tbody>
       </table>
     </div>
   );
+  };
 };
 export default Artistas;

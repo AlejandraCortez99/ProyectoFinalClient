@@ -32,7 +32,14 @@ form {
   color: white;
   display:flex;
   flex-direction: column;
-  
+}
+.track{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+p{
+  font-size: 10px;
 }
 .home-usuario-container h1 {
   color: #0ff2b2;

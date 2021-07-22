@@ -10,6 +10,7 @@ const Navbar = () => {
         </Link>
         
         <Buscar />
+        
         </div>
     );
 };

@@ -5,6 +5,16 @@
     display:flex;
     flex-direction: column;
 }
+.resultados-artistas-container {
+    background-color: #161c40;
+    color: white;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.resultados-artistas-container tr img {
+    display:flex; 
+}
 .cancion-container {
     /* background-color: tomato; */
     display:flex;
@@ -18,6 +28,9 @@
     width:350px;
     display:flex;
     flex-direction: column;
+}
+.lyrics p{
+    font-size: 14px;
 }
 .resultados-container-cancion {
     display:flex;

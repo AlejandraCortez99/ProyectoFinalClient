@@ -7,7 +7,8 @@ import HomeUsuario from "./components/homeUsuario/homeUsuario";
 import ResultadosCanciones from "./components/vistasbuscador/resultadosCanciones";
 import ResultadosArtistas from "./components/vistasbuscador/resultadosArtistas";
 import LetrasCanciones from "./components/vistasbuscador/letrasCanciones";
-
+import Albumes from "./components/vistasbuscador/albumesArtista";
+// import Artista from "./components/vistasbuscador/artista";
 
 const App = () => {
   return (
@@ -62,7 +63,19 @@ const App = () => {
             return <LetrasCanciones></LetrasCanciones>;
           }}
         />
-  
+        <Route
+          exact
+          path="/albumesArtista/:id_artist"
+          render={() => {
+            return <Albumes></Albumes>;
+          }}
+        />{/* <Route
+          exact
+          path="/artista/:id_artist"
+          render={() => {
+            return <Artista></Artista>;
+          }}
+        /> */}
       </Switch>
     </div>
   );

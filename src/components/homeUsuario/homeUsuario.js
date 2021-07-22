@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Navbar from "../home/navbar";
-import LetrasCanciones from "../vistasbuscador/letrasCanciones";
+
 const { useState, useEffect } = React;
 
 
@@ -48,18 +48,18 @@ const HomeUsuario = () => {
               return (
                 <tr key={`favorito-container-${favorito._id}`}>
                   <td key={`favorito-cover-${favorito._id}`}>
-                  <img src={`https://api.happi.dev/v1/music/cover/${favorito.id_album}`} alt="cover" height="55" width="55" />
+                  <img src={`https://api.happi.dev/v1/music/cover/${favorito.id_album}`} alt="cover" height="60" width="60" />
                   </td>
-                  <td key={`favorito-titulo-${favorito._id}`}>
+                  <td key={`favorito-titulo-${favorito._id}`} className="track">
                   <Link
                     to={`/letrasCanciones/${favorito.id_artist}/${favorito.id_album}/${favorito.id_track}`}
                     className="link">
                     {favorito.titulo}
                   </Link>
+                   <p>{favorito.autor}</p>
                   </td>
-                  <td key={`favorito-autor-${favorito._id}`}>
-                    {favorito.autor}
-                  </td>
+                  {/* <td key={`favorito-autor-${favorito._id}`}>
+                  </td> */}
                   <td key={`favorito-album-${favorito._id}`}>
                     {favorito.album}
                   </td>
