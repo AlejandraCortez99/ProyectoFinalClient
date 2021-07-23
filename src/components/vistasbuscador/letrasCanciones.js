@@ -1,6 +1,9 @@
 import React from "react";
 import "./resultadosBusquedas.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Favorito from "../favorito/favorito";
+import iFavorito from "../../media/favorito.png";
+import iNoFavorito from "../../media/noFavorito.png";
 const { useState, useEffect } = React;
 
 const Letras = () => {
@@ -14,6 +17,10 @@ const Letras = () => {
     cargando: true,
     // versos:[],
   });
+  const presionado = (event)=>{
+    event.preventDefault();
+    console.log("el boton esta pulsado");
+  }
   let { id_artist, id_album, id_track } = useParams();
   const getLetra = async () => {
     const responseFromGet = await fetch(
@@ -54,25 +61,25 @@ const Letras = () => {
   } else {
     return (
       <div className="resultados-container-cancion">
-        <div
-          className="cancion-container"
-        >
+        <div className="cancion-container">
           <div className="informacion">
             <img
               src={`https://api.happi.dev/v1/music/cover/${info.id_album}`}
               alt="cover"
-              height="190"
-              width="190"
+              height="200"
+              width="200"
             />
             <h5>{info.artista}</h5>
             <h6>{info.album}</h6>
+            {info.favorito}
+            <button className="button" onClick={presionado}>
+              <Favorito />
+            </button>
           </div>
           <div className="lyrics">
             <h4>{info.titulo}</h4>
-            {info.lyrics.map((obj)=>{
-              return (
-                <div>{obj}</div>
-              )
+            {info.lyrics.map((obj) => {
+              return <div>{obj}</div>;
             })}
           </div>
         </div>

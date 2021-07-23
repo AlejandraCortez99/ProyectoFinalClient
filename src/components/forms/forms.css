@@ -11,6 +11,20 @@
   text-decoration: none;
   background-color: rgba(109, 36, 36, 0);
   color: white;
+  transition: all 0.4s linear;
+}
+.link:hover{
+  color:teal;
+}
+.button-login {
+  background-color: grey;
+  color:white;
+  width:100%;
+  transition: all 0.4s linear;
+}
+.button-login:hover {
+  background-color: white;
+  color:teal;
 }
 .singup-container {
   background-color: #161c40;
@@ -33,13 +47,16 @@ form {
   display:flex;
   flex-direction: column;
 }
-.track{
-  display:flex;
-  flex-direction: column;
+.caratula {
+  display: flex;
   justify-content: center;
 }
+.celda-links{
+  display:flex;
+  flex-direction: column;
+}
 p{
-  font-size: 10px;
+  font-size: 15px;
 }
 .home-usuario-container h1 {
   color: #0ff2b2;

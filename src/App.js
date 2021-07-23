@@ -63,19 +63,20 @@ const App = () => {
             return <LetrasCanciones></LetrasCanciones>;
           }}
         />
-        <Route
-          exact
-          path="/albumesArtista/:id_artist"
-          render={() => {
-            return <Albumes></Albumes>;
-          }}
-        />{/* <Route
+        {/* <Route
           exact
           path="/artista/:id_artist"
           render={() => {
             return <Artista></Artista>;
           }}
         /> */}
+        <Route
+          exact
+          path="/albumesArtista/:id_artist"
+          render={() => {
+            return <Albumes></Albumes>;
+          }}
+        />
       </Switch>
     </div>
   );

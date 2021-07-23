@@ -18,6 +18,7 @@
 .cancion-container {
     /* background-color: tomato; */
     display:flex;
+    margin-top:100px;
 }
 .informacion {
     /* background-color: turquoise; */
@@ -51,3 +52,7 @@ h3, h1{
     background-color: rgba(109, 36, 36, 0);
     color: white;
   }
+.button {
+    border: none;
+    background-color: rgba(0, 128, 128, 0);
+}

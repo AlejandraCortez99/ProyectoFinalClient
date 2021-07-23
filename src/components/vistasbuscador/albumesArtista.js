@@ -6,8 +6,7 @@ const Albumes = () => {
   let [info, setInfo] = useState({
     albumes: [],
   });
-  let id_artist = useParams();
-  console.log(id_artist);
+  let { id_artist } = useParams();
   const getAlbumes = async () => {
     const responseFromGet = await fetch(
       `http://localhost:2550/albumes/${id_artist}`,
@@ -26,6 +25,7 @@ const Albumes = () => {
     setInfo({
       albumes: [responseFromGet],
     });
+    console.log(responseFromGet);
   };
   useEffect(() => {
     getAlbumes();
@@ -36,14 +36,15 @@ const Albumes = () => {
   return (
     <div>
       <h1>esta es la ruta de los albumes</h1>
-        {info.albumes.map((busqueda)=>{
+        {/* {info.albumes.map((busqueda)=>{
           console.log("¿se ejecuta hasta aqui?");
           <div key={`albumes-container-${busqueda.id_artist}`}>
             <p>si llega aqui es un milagro(?)</p>
           </div>
           })
-        }
+        } */}
     </div>
-  )};
+  )
+  };
 };
 export default Albumes;
