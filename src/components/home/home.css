@@ -1,8 +1,6 @@
 .home-container-links {
   background:linear-gradient(#020094 32%, rgb(0, 0, 0));
   width: 100%;
-  height: 100%;
-  /* color: #0ff2b2; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,20 +14,27 @@
   flex-direction: column;
 }
 .home-container h1{
-  height: 100%;
-  font-size: 55px;
+  margin-top:10px;
+  font-size: 60px;
   color:#f6b78d;
 }
 .home-link {
   text-decoration: none;
+  text-align: center;
   font-size: 19px;
-  transition: all 0.4s linear;
+  transition: all 0.3s linear;
   color: #d3dfe7;
+  margin: 8px;
+  width: 150px;
+  padding: 5px;
+  border: solid thin rgb(48, 49, 58);
+  background-color: rgba(47, 40, 68, 0.568);
 }
 .home-link:hover{
   color:#f6b78d;
-  font-size: 25px;
+  background-color:rgba(86, 75, 121, 0.904) ;
 }
+
 /* .button {
   background-color: grey;
   width:135px;

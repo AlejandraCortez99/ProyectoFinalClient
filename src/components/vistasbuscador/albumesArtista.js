@@ -28,10 +28,10 @@ const Albumes = () => {
       });
     setInfo({
       albumes: responseFromGet.albums.albums,
-      artista: responseFromGet.albums.artista,
+      artista: responseFromGet.albums.artist,
       id_artist: responseFromGet.albums.id_artist,
     });
-    console.log(responseFromGet);
+    console.log(responseFromGet.albums.artist);
   };
   useEffect(() => {
     getAlbumes();
@@ -42,7 +42,7 @@ const Albumes = () => {
     return (
       <div className="resultadosCanciones-container">
         <Navbar/>
-        <h1>esta es la ruta de los albumes</h1>
+        <h1>Discografía de {info.artista}</h1>
         {console.log(info)}
         <table>
           <tbody>

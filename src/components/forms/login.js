@@ -28,7 +28,7 @@ const Login = () => {
     saveToken(myToken);
     redirect();
   };
-  
+
   const postLogin = async () => {
     const responseFromPost = await fetch("http://localhost:2550/login", {
       method: "POST",
@@ -38,20 +38,20 @@ const Login = () => {
       },
       body: JSON.stringify(info),
     })
-    .then((res) => res.json())
-    .then((result) => {
-      return result;
-    });
+      .then((res) => res.json())
+      .then((result) => {
+        return result;
+      });
     return responseFromPost.token;
   };
   const saveToken = (tokenElement) => {
-  console.log(tokenElement);
-  window.localStorage.setItem("token", tokenElement);
+    console.log(tokenElement);
+    window.localStorage.setItem("token", tokenElement);
   };
   const redirect = () => {
     history.push("/homeUsuario");
   };
-  
+
   return (
     <div className="supremo">
       <div className="home-container">
@@ -65,9 +65,6 @@ const Login = () => {
       <div className="login-container">
         <div className="formulario-wrap">
           <h3>Login</h3>
-          <Link to="/signup" className="home-link">
-            Sign Up
-          </Link>
           <div class="formulario-box">
             <form onSubmit={handleFormSubmit} className="login-form">
               <input
@@ -76,7 +73,6 @@ const Login = () => {
                 placeholder="Email"
                 onChange={handleChange}
               />
-              
               <input
                 type="password"
                 name="password"
@@ -84,6 +80,9 @@ const Login = () => {
                 onChange={handleChange}
               />
               <input type="submit" value="Submit" className="button-form" />
+              <div className="opcion">
+                <p>o regístrate aquí </p><Link to="/signup" className="linkTo">Sign Up</Link>
+              </div>
             </form>
           </div>
         </div>

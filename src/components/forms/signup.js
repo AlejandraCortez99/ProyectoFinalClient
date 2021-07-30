@@ -67,9 +67,6 @@ const SignUp = () => {
         <div class="formulario-wrap">
           {console.log(info)}
           <h3>Sign Up</h3>
-          <Link to="/login" className="home-link">
-            Log In
-          </Link>
           <div class="formulario-box">
             <form onSubmit={handleFormSubmit} className="signup-form">
               <input
@@ -87,10 +84,15 @@ const SignUp = () => {
               <input
                 type="password"
                 name="password"
-                placeholder="Password (min.8 crts)"
+                placeholder="Contraseña (min.8 crts)"
                 onChange={handleChange}
               />
               <input type="submit" value="Submit" className="button-form" />
+              <div className="opcion">
+                <p>o inicia sesión aquí
+                </p><Link to="/login" className="linkTo">
+                  Log In</Link>
+              </div>
             </form>
           </div>
         </div>

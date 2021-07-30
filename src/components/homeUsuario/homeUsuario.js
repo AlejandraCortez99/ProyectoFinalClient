@@ -69,7 +69,7 @@ const HomeUsuario = () => {
               <tbody>
                 {info.favoritos.map((favorito) => {
                   return (
-                    <tr key={`favorito-container-${favorito._id}`}>
+                    <tr key={`favorito-container-${favorito._id}`} className="border">
                       <td
                         key={`favorito-cover-${favorito._id}`}
                         className="caratula"
