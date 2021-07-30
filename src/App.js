@@ -1,14 +1,16 @@
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/home/home";
+import LogOut from "./components/home/logOut";
 import Login from "./components/forms/login";
 import SignUp from "./components/forms/signup";
 import HomeUsuario from "./components/homeUsuario/homeUsuario";
 import ResultadosCanciones from "./components/vistasbuscador/resultadosCanciones";
+import Intermedio from "./components/vistasbuscador/intermedio";
 import ResultadosArtistas from "./components/vistasbuscador/resultadosArtistas";
 import LetrasCanciones from "./components/vistasbuscador/letrasCanciones";
 import Albumes from "./components/vistasbuscador/albumesArtista";
-// import Artista from "./components/vistasbuscador/artista";
+import Tracks from "./components/vistasbuscador/albumTracks";
 
 const App = () => {
   return (
@@ -63,18 +65,40 @@ const App = () => {
             return <LetrasCanciones></LetrasCanciones>;
           }}
         />
-        {/* <Route
-          exact
-          path="/artista/:id_artist"
-          render={() => {
-            return <Artista></Artista>;
-          }}
-        /> */}
         <Route
           exact
           path="/albumesArtista/:id_artist"
           render={() => {
             return <Albumes></Albumes>;
+          }}
+        />
+        <Route
+          exact
+          path="/albumTracks/:id_artist/:id_album"
+          render={() => {
+            return <Tracks></Tracks>;
+          }}
+        />
+        <Route
+          exact
+          path="/logout"
+          render={() => {
+            window.localStorage.clear();
+            return <Home></Home>;
+          }}
+        />
+        <Route
+          exact
+          path="/intermedioCancion/:texto"
+          render={() => {
+            return <Intermedio tipo="cancion"></Intermedio>;
+          }}
+        />
+        <Route
+          exact
+          path="/intermedioArtista/:texto"
+          render={() => {
+            return <Intermedio tipo="artista"></Intermedio>;
           }}
         />
       </Switch>

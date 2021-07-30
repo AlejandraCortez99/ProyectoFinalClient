@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Buscar from "../forms/buscar";
-import LetrasCanciones from "../vistasbuscador/letrasCanciones";
+import Navbar from "../home/navbar";
 const { useState, useEffect } = React;
 
 const Canciones = () => {
@@ -10,7 +10,9 @@ const Canciones = () => {
     cancion: [],
   });
   let params = useParams();
+  console.log(params);
   const postCancion = async () => {
+    // console.log(params.cancion);
     const responseFromPost = await fetch(
       "http://localhost:2550/buscarCancion",
       {
@@ -31,24 +33,24 @@ const Canciones = () => {
       cancion: responseFromPost,
     });
   };
-  useEffect(() => {
-    postCancion();
+  useEffect(async () => {
+    await postCancion();
   }, []);
-
+  // console.log(info.cancion);
   if (info.cancion === "") {
     return <div>Cargando...</div>;
   } else {
     return (
     <div className="resultadosCanciones-container">
+      <Navbar />
       <h1>Canciones</h1>
-      <Buscar />
       <table>
         <caption>Resultados</caption>
         <tbody>
           {info.cancion.map((resultado) => {
             return (
               <tr key={`resultados-container-${resultado.id_track}`}>
-                {console.log(resultado)}
+                {/* {console.log(resultado.track)} */}
                 <td key={`resultados-cover-${resultado}`}>
                   <img
                     src={`https://api.happi.dev/v1/music/cover/${resultado.id_album}`}
@@ -57,7 +59,7 @@ const Canciones = () => {
                     width="55"
                   />
                 </td>
-                <td key={`resultados-titulo-${resultado}`}>
+                <td key={`resultados-titulo-${resultado.track}`}>
                   <Link
                     to={`/letrasCanciones/${resultado.id_artist}/${resultado.id_album}/${resultado.id_track}`}
                     className="link">

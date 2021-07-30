@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Navbar from "../home/navbar";
 const { useState, useEffect } = React;
 
 const Artistas = () => {
@@ -34,13 +35,13 @@ const Artistas = () => {
   useEffect(() => {
     postArtista();
   }, []);
-  if (info.artista == ""){
+  if (info.artista === ""){
     return <div>Cargando...</div>;
   } else {
   return (
     <div className="resultados-artistas-container">
+        <Navbar />
       <h1>Artistas</h1>
-      {/* <Buscar /> */}
       <table>
         <caption>Artistas</caption>
         <tbody>

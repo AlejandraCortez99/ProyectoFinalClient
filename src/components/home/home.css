@@ -1,5 +1,5 @@
 .home-container-links {
-  background:linear-gradient(#161c40 32%, rgb(0, 0, 0));
+  background:linear-gradient(#020094 32%, rgb(0, 0, 0));
   width: 100%;
   height: 100%;
   /* color: #0ff2b2; */
@@ -8,22 +8,27 @@
   align-items: center;
   justify-content: center;
 }
-h1{
-  font-size: 55px;
-}
 .home-container {
+  width: 100vw;
+  height: 100vh;
+  color:#f6b78d;
   display:flex;
   flex-direction: column;
 }
+.home-container h1{
+  height: 100%;
+  font-size: 55px;
+  color:#f6b78d;
+}
 .home-link {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 19px;
   transition: all 0.4s linear;
-  color: white;
+  color: #d3dfe7;
 }
 .home-link:hover{
-  color:teal;
-  font-size: 35px;
+  color:#f6b78d;
+  font-size: 25px;
 }
 /* .button {
   background-color: grey;
@@ -35,9 +40,24 @@ h1{
   width: 150px;
 } */
 .navbar-container {
-  background-color: #161c40;
+  background-color: #080708;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  height: 80px;
+  padding:10px;
+  flex-wrap: wrap;
+}
+.buscar {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
 }
 .fondo {
+  height: 100vh;
+  width:100%;
   position: relative;
 }
 .fondo:before {
@@ -51,4 +71,18 @@ h1{
   display: block;
   width: 100%;
   height: 100%;
+}
+.supremo{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+.ejection {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  position:absolute;
 }

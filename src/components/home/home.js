@@ -10,7 +10,6 @@ const Home = () => {
         <Link to="/signup" className="home-link">
           Sign Up
         </Link>
-
         <Link to="/login" className="home-link">
           Log In
         </Link>

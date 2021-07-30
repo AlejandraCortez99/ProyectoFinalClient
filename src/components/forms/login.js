@@ -1,7 +1,9 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./forms.css";
-import React from "react";
+import "../home/home.css";
 import { useHistory } from "react-router-dom";
+import Background from "../../media/background.jpg";
 const useState = React.useState;
 
 const Login = () => {
@@ -22,9 +24,11 @@ const Login = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     let myToken = await postLogin();
+    // valido();
     saveToken(myToken);
     redirect();
   };
+  
   const postLogin = async () => {
     const responseFromPost = await fetch("http://localhost:2550/login", {
       method: "POST",
@@ -34,49 +38,56 @@ const Login = () => {
       },
       body: JSON.stringify(info),
     })
-      .then((res) => res.json())
-      .then((result) => {
-        return result;
-      });
+    .then((res) => res.json())
+    .then((result) => {
+      return result;
+    });
     return responseFromPost.token;
   };
   const saveToken = (tokenElement) => {
-    console.log(tokenElement);
-    window.localStorage.setItem("token", tokenElement);
-  }
+  console.log(tokenElement);
+  window.localStorage.setItem("token", tokenElement);
+  };
   const redirect = () => {
     history.push("/homeUsuario");
   };
   
   return (
-    <div className="login-container">
-      <h1>Login</h1>
-      <Link to="/" className="link">
-        Home
-      </Link>
-      <Link to="/signup" className="link">
-        Sign Up
-      </Link>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-        />
-
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          onChange={handleChange}
-        />
-        <input
-        type="submit"
-        value="Submit"
-        className="button-login"
-        />
-      </form>
+    <div className="supremo">
+      <div className="home-container">
+        <div className="home-container-links">
+          <h1>Home</h1>
+        </div>
+        <div className="fondo">
+          <img src={Background} alt="fondo" />
+        </div>
+      </div>
+      <div className="login-container">
+        <div className="formulario-wrap">
+          <h3>Login</h3>
+          <Link to="/signup" className="home-link">
+            Sign Up
+          </Link>
+          <div class="formulario-box">
+            <form onSubmit={handleFormSubmit} className="login-form">
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+              />
+              
+              <input
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                onChange={handleChange}
+              />
+              <input type="submit" value="Submit" className="button-form" />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

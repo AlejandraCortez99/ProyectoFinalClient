@@ -1,12 +1,12 @@
-.resultadosCanciones-container {
+.resultadosCanciones-container, .albumTrackList-container {
     margin: auto;
-    background-color: #161c40;
-    color: white;
+    background-color: #020094;
+    color: #d3dfe7;
     display:flex;
     flex-direction: column;
 }
 .resultados-artistas-container {
-    background-color: #161c40;
+    background-color: #020094;
     color: white;
     display:flex;
     flex-direction: column;
@@ -15,44 +15,68 @@
 .resultados-artistas-container tr img {
     display:flex; 
 }
-.cancion-container {
-    /* background-color: tomato; */
-    display:flex;
-    margin-top:100px;
-}
+
 .informacion {
     /* background-color: turquoise; */
-    width: 190px;
+    width: 250px;
+    padding:50px;
 }
 .lyrics {
     /* background-color: seagreen; */
-    width:350px;
+    width:400px;
     display:flex;
     flex-direction: column;
+    padding:40px;
 }
 .lyrics p{
-    font-size: 14px;
+    font-size: 17px;
 }
 .resultados-container-cancion {
     display:flex;
     flex-direction: column;
-    background-color: navy;
-    color: white;
+    background-color: #020094;
+    color: #d3dfe7;
 }
 .cancion-container {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-evenly;
+    flex-flow: wrap;
+    /* align-items: flex-start; */
+    justify-content: center;
+    /* margin-top:90px; */
+    background-color: #020094;
 }
-h3, h1{
-    color: #0ff2b2;
+.icono {
+    height: 25px;
+    width:25px;
+    filter:invert()
+}
+h3, h1, h6, h5, .cancion-container h2{
+    color: #f6b78d;
 }
 .link {
     text-decoration: none;
     background-color: rgba(109, 36, 36, 0);
-    color: white;
+    color: #d3dfe7;
   }
 .button {
     border: none;
     background-color: rgba(0, 128, 128, 0);
+}
+.tracklist{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    /* border-top: thin solid black; */
+}
+caption, caption h1{
+    display: flex;
+    flex-wrap: wrap;
+    color: #f6b78d;
+    align-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.noLetra{
+    display: block;
+    flex-direction: column;
 }

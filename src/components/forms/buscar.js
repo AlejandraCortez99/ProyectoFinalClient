@@ -27,12 +27,12 @@ const Buscar = () => {
 
   let enviarCancion = (event) => {
     event.preventDefault();
-    redirect();
+    redirectCancion();
   };
 
-  const redirect = () => {
+  const redirectCancion = () => {
     let nombreCancion = info.cancion;
-    history.push(`/resultadosCanciones/${nombreCancion}`);
+    history.push(`/intermedioCancion/${nombreCancion}`);
   };
 
   let enviarArtista = (evento) => {
@@ -42,7 +42,7 @@ const Buscar = () => {
 
   const redirectArtista = () => {
     let nombreArtista = info.artista;
-    history.push(`/resultadosArtistas/${nombreArtista}`);
+    history.push(`/intermedioArtista/${nombreArtista}`);
   };
 
   return (
@@ -54,7 +54,7 @@ const Buscar = () => {
           placeholder="Bucar Cancion"
           onChange={handleChangeCancion}
         />
-        <input type="submit" value="Buscar cancion" />
+        <input type="submit" value="Buscar cancion" className="botones"/>
       </form>
       <form onSubmit={enviarArtista}>
         <input
@@ -63,7 +63,7 @@ const Buscar = () => {
           placeholder="Bucar Artista"
           onChange={handleChangeArtista}
         />
-        <input type="submit" value="Buscar artista" />
+        <input type="submit" value="Buscar artista" className="botones" />
       </form>
     </div>
   );
