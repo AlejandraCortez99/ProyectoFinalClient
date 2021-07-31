@@ -46,7 +46,7 @@ const Buscar = () => {
   };
 
   return (
-    <div>
+    <div className="form-buscar">
       <form onSubmit={enviarCancion}>
         <input
           type="text"

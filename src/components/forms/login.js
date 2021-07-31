@@ -10,7 +10,9 @@ const Login = () => {
   let [info, setInfo] = useState({
     email: "",
     password: "",
+    message:"",
   });
+
   let history = useHistory();
 
   const handleChange = (event) => {
@@ -18,15 +20,19 @@ const Login = () => {
     setInfo({
       ...info,
       [event.target.name]: value,
-      [event.target.name]: value,
     });
   };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    let myToken = await postLogin();
-    // valido();
-    saveToken(myToken);
-    redirect();
+    let response = await postLogin();
+    if(response.auth === true){
+      saveToken(response.token);
+      redirect();
+    }else{
+      setInfo({
+        message: response.message
+      })
+    }
   };
 
   const postLogin = async () => {
@@ -36,18 +42,22 @@ const Login = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(info),
+      body: JSON.stringify({
+        email: info.email,
+        password: info.password,
+      }),
     })
       .then((res) => res.json())
       .then((result) => {
         return result;
       });
-    return responseFromPost.token;
+    return responseFromPost;
   };
+
   const saveToken = (tokenElement) => {
-    console.log(tokenElement);
     window.localStorage.setItem("token", tokenElement);
   };
+
   const redirect = () => {
     history.push("/homeUsuario");
   };
@@ -73,6 +83,7 @@ const Login = () => {
                 placeholder="Email"
                 onChange={handleChange}
               />
+              
               <input
                 type="password"
                 name="password"
@@ -82,6 +93,9 @@ const Login = () => {
               <input type="submit" value="Submit" className="button-form" />
               <div className="opcion">
                 <p>o regístrate aquí </p><Link to="/signup" className="linkTo">Sign Up</Link>
+              </div>
+              <div className="aviso">
+                <p>{info.message}</p>
               </div>
             </form>
           </div>

@@ -11,6 +11,7 @@ const SignUp = () => {
     nombre: "",
     email: "",
     password: "",
+    message: "",
   });
   let history = useHistory();
 
@@ -26,9 +27,15 @@ const SignUp = () => {
   };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    let myToken = await postSignup();
-    saveToken(myToken);
-    redirect();
+    let response = await postSignup();
+    if (response.auth === true) {
+      saveToken(response.token);
+      redirect();
+    } else if(response.auth === false){
+      setInfo({
+        message: response.message
+      });
+    }
   };
   const postSignup = async () => {
     const responseFromPost = await fetch("http://localhost:2550/signup", {
@@ -37,13 +44,17 @@ const SignUp = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(info),
+      body: JSON.stringify({
+        nombre: info.nombre,
+        email: info.email,
+        password: info.password,
+      }),
     })
       .then((res) => res.json())
       .then((result) => {
         return result;
       });
-    return responseFromPost.token;
+    return responseFromPost;
   };
   const saveToken = (tokenElement) => {
     console.log(tokenElement);
@@ -89,9 +100,13 @@ const SignUp = () => {
               />
               <input type="submit" value="Submit" className="button-form" />
               <div className="opcion">
-                <p>o inicia sesión aquí
-                </p><Link to="/login" className="linkTo">
-                  Log In</Link>
+                <p>o inicia sesión aquí</p>
+                <Link to="/login" className="linkTo">
+                  Log In
+                </Link>
+              </div>
+              <div className="aviso">
+                <p>{info.message}</p>
               </div>
             </form>
           </div>

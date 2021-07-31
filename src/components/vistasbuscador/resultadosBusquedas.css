@@ -13,14 +13,26 @@
 } 
 .resultados-table table{
     width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    align-content: flex-start;
 }
 .resultados-table td {
-    /* border-top: thin solid black; */
     height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-flow: column wrap;
+    padding: 10px;
 }
 .resultados-table tr{
     border-top: thin solid black;
-    height: 20px;
+    /* height: 20px; */
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
 }
 .resultados-artistas-container {
     background-color: #020094;

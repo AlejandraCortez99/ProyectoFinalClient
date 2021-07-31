@@ -49,10 +49,11 @@ const Canciones = () => {
           <table>
             <tbody>
               {info.cancion.map((resultado) => {
+                {console.log(resultado)}
                 return (
                   <tr key={`resultados-container-${resultado.id_track}`} class="border">
                     {/* {console.log(resultado.track)} */}
-                    <td key={`resultados-cover-${resultado}`}>
+                    <td key={`resultados-cover-${resultado.id_album}`}>
                       <img
                         src={`https://api.happi.dev/v1/music/cover/${resultado.id_album}`}
                         alt="cover"
@@ -68,10 +69,10 @@ const Canciones = () => {
                         {resultado.track}
                       </Link>
                     </td>
-                    <td key={`resultados-autor-${resultado}`}>
+                    <td key={`resultados-autor-${resultado.artist}`}>
                       {resultado.artist}
                     </td>
-                    <td key={`resultados-album-${resultado}`}>
+                    <td key={`resultados-album-${resultado.album}`}>
                       {resultado.album}
                     </td>
                   </tr>
